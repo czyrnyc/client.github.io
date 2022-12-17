@@ -1,0 +1,27 @@
+<div class="header">
+    <div class="topRight">
+        <app-login></app-login>
+    </div>
+    <div class="filters">
+
+    </div>  
+</div>
+
+<ng-container *ngFor="let product of Products">
+    <div class="col-md-3 mb-5">
+        <a (click)="openDetails(product)">
+        <div class="card bg-light">
+            <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.price | currency}}</p>
+            </div>
+        </div>
+        </a>
+    </div>
+</ng-container>
+<ng-container *ngIf="openCart">
+<app-cart></app-cart>
+</ng-container>
+<ng-container *ngIf="this.prodDetails">
+    <app-product [product]="this.selectedProduct"></app-product>
+</ng-container>

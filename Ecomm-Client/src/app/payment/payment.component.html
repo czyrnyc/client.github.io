@@ -1,0 +1,54 @@
+<header>Team M e-Store</header>
+<h1> Payment Method </h1>
+<ng-container *ngIf="this.paymentInfoInput; else selectMethod">
+    <div class="row-container">
+        <div class="input-container">
+            <table>
+                <tr>
+                    <td><b><label for="">Card Holder</label></b></td>
+                    <td><input type="text" id="cardHold" name="cardHold" [(ngModel)]= "cardHold"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">Card Number</label></b></td>
+                    <td><input type="text" id="cardNum" name="cardNum" [(ngModel)]= "cardNum"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">CVV</label></b></td>
+                    <td><input type="text" id="cvv" name="cvv" [(ngModel)]= "cvv"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">Expiration Date</label></b></td>
+                    <td><input type="text" id="exprDate" name="exprDate" [(ngModel)]= "exprDate"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">City</label></b></td>
+                    <td><input type="text" id="city" name="city" [(ngModel)]= "city"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">Street</label></b></td>
+                    <td><input type="text" id="street" name="street" [(ngModel)]= "street"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">Zip Code</label></b></td>
+                    <td><input type="text" id="zip" name="zip" [(ngModel)]= "zip"/></td>
+                </tr>
+                <tr>
+                    <td><b><label for="">Phone Number</label></b></td>
+                    <td><input type="text" id="phoneNum" name="phoneNum" [(ngModel)]= "phoneNum"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #selectMethod>
+    <div class="row-container"></div>
+    <form>
+        <select [(ngModel)]="cardSelect" name="cardSelect">
+            <ng-container *ngFor="let pay in PayMethods">
+                <option (click)="cardSelected(pay.card_number)">Card Number: {{pay.card_number}}. Card Holder: {{pay.card_holder}}</option>
+            </ng-container>
+        </select>
+        <br>
+    </form>
+</ng-template>

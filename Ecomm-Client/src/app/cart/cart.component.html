@@ -1,0 +1,35 @@
+<h1> Your Cart </h1>
+
+<div>
+    <ng-container *ngFor="let prod in cartItems">
+      
+       <p> {{prod.item_name}} </p> 
+
+       <p> {{prod.price | currency}} </p>
+
+       <!-- <p> {{ prod.image }} </p> -->
+
+       <p> qty : {{prod.quantity}} </p>
+
+       <button (click)="removeItem(prod.id)"> Remove Item From Cart </button>
+
+    </ng-container>   
+
+    <ng-container *ngIf="methodSelected; else checkoutButton">
+        <button (click)="confirmOrder()">Confirm Order</button>
+    </ng-container>
+    <ng-template #checkoutButton>
+        <button (click)="checkout()">Checkout</button>
+    </ng-template>
+
+  </div>
+
+  <!-- Insert checkout button here -->
+
+  <ng-container *ngIf="nullPaymethods">
+
+      <app-product [paymentInfoInput] = "this.payMethods"></app-product>
+
+  </ng-container>
+
+  

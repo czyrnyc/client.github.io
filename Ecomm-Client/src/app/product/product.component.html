@@ -1,0 +1,32 @@
+<h1 align="center">Our Products</h1>
+<div>
+    <ng-container *ngFor="let prod in product">
+      <!-- how we want our products to be displayed -->
+      <h2>
+        {{ prod.itemName }}
+      </h2>
+      <p>{{ prod.brand }}</p>
+      
+      <!-- image maybe? -->
+      <!-- <p *ngIf="prod.image"></p> -->
+      
+      <h3> {{ prod.price }} </h3>
+      
+      <p *ngIf="(prod.quantity ===  '0');else inStock">
+        Out of Stock!
+      </p>
+      <ng-template #inStock>
+        <p>
+          Quantity in Stock: {{ prod.quantity }}
+        </p>      
+      </ng-template>
+  
+      <p *ngIf="prod.description">      
+        Description: {{ prod.description }}
+      </p>
+
+      <button (click)="addToCart(prod.id)">Add to Cart</button>
+  
+    </ng-container>    
+  </div>
+  
